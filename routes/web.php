@@ -18,6 +18,7 @@ Route::post('/log', [AuthController::class, 'storeLogin'])->name('login.store');
 Route::post('/regist', [AuthController::class, 'storeRegister'])->name('register.store');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-//Santri
+//admin
 Route::get('/data_santri', [santriController::class, 'index'])->name('data.santri');
-
+Route::get('/create_santri', [santriController::class, 'createSantri'])->name('create.santri');
+Route::post('/santri_store', [santriController::class, 'store'])->name('store.santri');

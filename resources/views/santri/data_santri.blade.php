@@ -6,9 +6,23 @@
         <div class="row" id="basic-table">
             <div class="col-12 ">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                         <h4 class="card-title">Data Santri</h4>
+                            <a href="{{ route('create.santri')}}" class="btn btn-sm btn-primary ml-auto">Tambah Santri</a>
                     </div>
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                
+                @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                    <div class="card-content">
     <div class="card-body">
         <!-- Table with outer spacing -->
@@ -28,31 +42,33 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td class="text-bold-500">1</td>
-            <td>190021</td>
-            <td class="text-bold-500">Fahri Dwi Hermawan</td>
-            <td class="text-bold-500">Madiun, 06 April 2007</td>
-            <td class="text-bold-500">Danang Hermawan</td>
-            <td class="text-bold-500">08578469338</td>
-            <td class="text-bold-500">Banjarsari,bugangin, Madiun, Madiun</td>
-            <td class="text-bold-500">Aktif</td>
+        @foreach ($santris as $santri)
+        <tr>   
+            <td class="text-bold-500">{{  $loop->iteration }}</td>
+            <td>{{ $santri->no_induk}}</td>
+            <td class="text-bold-500">{{ $santri->nama }}</td>
+            <td class="text-bold-500">{{ $santri->ttl}}</td>
+            <td class="text-bold-500">{{ $santri->nama_wali}}</td>
+            <td class="text-bold-500">{{ $santri->no_hp_wali}}</td>
+            <td class="text-bold-500">{{ $santri->alamat}}</td>
+            <td class="text-bold-500">{{ $santri->status}}</td>
             <td class="text-center">
-            
+                
                 <button class="btn btn-primary btn-sm" title="Lihat">
                     <i class="bi bi-eye"></i>
                 </button>
-
+                
                 <button class="btn btn-warning btn-sm ms-2" title="Edit">
                     <i class="bi bi-pencil-square"></i>
                 </button>
-
+                
                 <button class="btn btn-danger btn-sm ms-2" title="Hapus">
                     <i class="bi bi-trash"></i>
                 </button>
-
+                
             </td>
         </tr>
+        @endforeach
     </tbody>
 </table>
 

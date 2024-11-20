@@ -9,5 +9,6 @@ class Santri extends Model
 {
     use HasFactory;
 
-    protected 
+    protected $lable = "santris";
+    protected $fillable = ['no_induk', 'nama', 'ttl', 'nama_wali', 'no_hp_wali', 'alamat', 'status'];
 }
