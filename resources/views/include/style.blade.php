@@ -9,3 +9,15 @@
   <link rel="stylesheet" href="{{ asset('template/assets/compiled/css/app-dark.css') }}">
   <link rel="stylesheet" href="{{ asset('template/assets/compiled/css/iconly.css') }}">
   <link rel="stylesheet" href="{{ asset('template/assets/compiled/css/auth.css')}}">
+
+  {{--  DataTabel  --}}
+     
+<link rel="stylesheet" href="{{ asset('template/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
+<link rel="stylesheet" href="{{ asset('template/assets/compiled/css/table-datatable-jquery.css') }}">
+
+{{--  style tembahan  --}}
+<style>
+    .table td, .table th {
+        white-space: nowrap; /* Prevents text from wrapping */
+    }
+</style>
