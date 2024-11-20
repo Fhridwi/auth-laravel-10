@@ -64,4 +64,14 @@ class SantriController extends Controller
         // Redirect setelah berhasil
         return redirect()->route('data.santri')->with('success', 'Data santri berhasil diperbarui.');
     }
+
+    // Fungsi Delete 
+    public function delete($id)
+{
+    $santri = Santri::findOrFail($id);
+    $santri->delete();
+
+    return redirect()->route('data.santri')->with('success', 'Data santri berhasil dihapus!');
+}
+
 }

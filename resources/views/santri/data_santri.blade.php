@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <!-- Table with outer spacing -->
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table id="santriTable" class="table table-striped">
                                     <thead>
                                         <tr class="text-center">
                                             <th>No</th>
@@ -35,15 +35,15 @@
                                             <th>Nama</th>
                                             <th>TTL</th>
                                             <th>Nama Wali</th>
-                                            <th>No Hp wali</th>
+                                            <th>No Hp Wali</th>
                                             <th>Alamat</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($santris as $santri)
-                                            <tr>
+                                        @forelse ($santris as $santri)
+                                            <tr class="text-center">
                                                 <td class="text-bold-500">{{ $loop->iteration }}</td>
                                                 <td>{{ $santri->no_induk }}</td>
                                                 <td class="text-bold-500">{{ $santri->nama }}</td>
@@ -52,42 +52,37 @@
                                                 <td class="text-bold-500">{{ $santri->no_hp_wali }}</td>
                                                 <td class="text-bold-500">{{ $santri->alamat }}</td>
                                                 <td class="text-bold-500">{{ $santri->status }}</td>
-                                                <td class="text-center">
-
+                                                <td>
                                                     <!-- Tombol Lihat (View) -->
-                                                    <a href=""
-                                                        class="btn btn-primary btn-sm" title="Lihat">
+                                                    <a href="{{ route('')}}" class="btn btn-primary btn-sm" title="Lihat">
                                                         <i class="bi bi-eye"></i>
                                                     </a>
 
                                                     <!-- Tombol Edit -->
-                                                    <a href="{{ route('edit.santri', $santri->id) }}"
-                                                        class="btn btn-warning btn-sm ms-2" title="Edit">
+                                                    <a href="{{ route('edit.santri', $santri->id) }}" class="btn btn-warning btn-sm ms-2" title="Edit">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
 
                                                     <!-- Tombol Hapus -->
-                                                    <form action=""
-                                                        method="POST" style="display:inline;">
+                                                    <form action="{{ route('santri.delete', $santri->id) }}" method="POST" style="display:inline;" id="delete-form-{{ $santri->id }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm ms-2"
-                                                            title="Hapus">
+                                                        <button type="button" class="btn btn-danger btn-sm ms-2" title="Hapus" onclick="confirmDelete({{ $santri->id }})">
                                                             <i class="bi bi-trash"></i>
                                                         </button>
                                                     </form>
-
-
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="9" class="text-center">Tidak ada data santri yang tersedia.</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

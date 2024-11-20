@@ -24,3 +24,4 @@ Route::get('/create_santri', [santriController::class, 'createSantri'])->name('c
 Route::post('/santri_store', [santriController::class, 'store'])->name('store.santri');
 Route::get('/santri/{id}/edit', [SantriController::class, 'edit'])->name('edit.santri');
 Route::put('/santri/{id}', [SantriController::class, 'update'])->name('update.santri');
+Route::delete('/santri/{id}', [SantriController::class, 'delete'])->name('santri.delete');

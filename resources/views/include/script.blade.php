@@ -13,3 +13,26 @@
 <script src="{{ asset('template/assets/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('template/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
 <script src="{{ asset('template/assets/static/js/pages/datatables.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#santriTable').DataTable({
+            "paging": true,         
+            "lengthChange": true,   
+            "searching": true,       
+            "ordering": true,        
+            "info": true,          
+            "autoWidth": false       
+        });
+    });
+</script>
+
+// alret
+<script>
+    function confirmDelete(id) {
+        // Menampilkan dialog konfirmasi
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+            // Jika pengguna memilih OK, kirimkan form penghapusan
+            document.getElementById('delete-form-' + id).submit();
+        }
+    }
+</script
