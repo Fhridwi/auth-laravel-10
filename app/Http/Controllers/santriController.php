@@ -35,4 +35,33 @@ class SantriController extends Controller
 
         return redirect()->route('data.santri')->with('success', 'Santri berhasil ditambahkan.');
     }
+    // Edit Santri
+    public function edit($id)
+    {
+        $santri = Santri::findOrFail($id);
+        return view('santri.edit_santri', compact('santri'));
+    }
+
+    // Fungsi untuk menangani update
+    public function update(Request $request, $id)
+    {
+        $santri = Santri::findOrFail($id);
+
+        // Validasi data
+        $validatedData = $request->validate([
+            'no_induk'   => 'required|string|unique:santris,no_induk,' . $santri->id,
+            'nama'       => 'required|string',
+            'ttl'        => 'required|string',
+            'nama_wali'  => 'required|string',
+            'no_hp_wali' => 'required|numeric',
+            'alamat'     => 'required|string',
+            'status'     => 'required|string',
+        ]);
+
+        // Update data Santri
+        $santri->update($validatedData);
+
+        // Redirect setelah berhasil
+        return redirect()->route('data.santri')->with('success', 'Data santri berhasil diperbarui.');
+    }
 }

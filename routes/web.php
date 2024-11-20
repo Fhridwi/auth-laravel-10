@@ -22,3 +22,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/data_santri', [santriController::class, 'index'])->name('data.santri');
 Route::get('/create_santri', [santriController::class, 'createSantri'])->name('create.santri');
 Route::post('/santri_store', [santriController::class, 'store'])->name('store.santri');
+Route::get('/santri/{id}/edit', [SantriController::class, 'edit'])->name('edit.santri');
+Route::put('/santri/{id}', [SantriController::class, 'update'])->name('update.santri');
