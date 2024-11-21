@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <!-- Table with outer spacing -->
                             <div class="table-responsive">
-                                <table id="santriTable" class="table table-striped">
+                                <table id="santriTable" class="table table-sm table-striped">
                                     <thead>
                                         <tr class="text-center">
                                             <th>No</th>
@@ -50,11 +50,11 @@
                                                 <td class="text-bold-500">{{ $santri->ttl }}</td>
                                                 <td class="text-bold-500">{{ $santri->nama_wali }}</td>
                                                 <td class="text-bold-500">{{ $santri->no_hp_wali }}</td>
-                                                <td class="text-bold-500">{{ $santri->alamat }}</td>
+                                                <td class="text-bold-500">{{ $santri->alamat_wali }}</td>
                                                 <td class="text-bold-500">{{ $santri->status }}</td>
                                                 <td>
                                                     <!-- Tombol Lihat (View) -->
-                                                    <a href="{{ route('')}}" class="btn btn-primary btn-sm" title="Lihat">
+                                                    <a href="{{ route('detail.santri', $santri->id)}}" class="btn btn-primary btn-sm" title="Lihat">
                                                         <i class="bi bi-eye"></i>
                                                     </a>
 
